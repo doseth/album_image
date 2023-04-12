@@ -194,9 +194,11 @@ class _AlbumImagePickerState extends State<AlbumImagePicker>
     }
     PhotoManager.getAssetPathList(type: type).then((pathList) {
       /// don't delete setState
-      setState(() {
-        provider.resetPathList(pathList);
-      });
+      if (mounted) {  
+        setState(() {
+          provider.resetPathList(pathList);
+        });
+      }
     });
   }
 
